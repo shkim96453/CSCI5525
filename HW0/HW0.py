@@ -1,0 +1,1 @@
+w = np.transpose(x)*y / (np.transpose(x)*x + lmbda*np.identity(np.prod(x.shape)))
