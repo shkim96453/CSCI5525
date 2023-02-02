@@ -44,22 +44,23 @@ y_test = y[NUM_TRAIN:]
 #####################
 # ADD YOUR CODE BELOW
 #####################
-
+lambda_vals = np.arange(-0.01, 0.001, 0.001)
+lambda_vals = np.round(lambda_vals, 4)
 for lambda_val in lambda_vals:
-
+    print(lambda_val)
     # instantiate LDA object
-
+    lda = MyLDA(lambda_val)
     # call to your CV function to compute error rates for each fold
-
+    lda_err = my_cross_val(lda, 'err_rate', X, y)
     # print error rates from CV
-
+    print ("LDA Error Rate by Fold", lda_err)
 # instantiate LDA object for best value of lambda
-
+best_lda = MyLDA(-0.002)
 # fit model using all training data
-
+best_lda.fit(X_train, y_train)
 # predict on test data
-
+best_lda.predict(X_test)
 # compute error rate on test data
-
+best_lda_err = my_cross_val(lda, 'err_rate', X_test, y_test)
 # print error rate on test data
-
+print ("LDA Error Rate by Fold, Best Lambda on Test Set", best_lda_err)

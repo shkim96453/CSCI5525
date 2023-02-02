@@ -45,26 +45,26 @@ lambda_vals = [0.01, 0.1, 1, 10, 100]
 #####################
 
 for lambda_val in lambda_vals:
-
+    print(lambda_val)
     # instantiate ridge regression object
-
+    rr_model = MyRidgeRegression(lambda_val)
     # call to your CV function to compute mse for each fold
-
+    rr_mse_vals = my_cross_val(rr_model, 'mse', X, y)
     # print mse from CV
-
+    print("Ridge Regression MSE by Fold", rr_mse_vals)
     # instantiate lasso object
-
+    ls_model = Lasso(lambda_val)
     # call to your CV function to compute mse for each fold
-
+    ls_mse_vals = my_cross_val(rr_model, 'mse', X, y)
     # print mse from CV
-
+    print("Lasso Regression MSE by Fold", ls_mse_vals)
 # instantiate ridge regression and lasso objects for best values of lambda
-
+rr_model_best = MyRidgeRegression(0.01)
 # fit models using all training data
-
+rr_model_best.fit(X_train, y_train)
 # predict on test data
-
+rr_model_best.predict(X_test)
 # compute mse on test data
-
+best_rr_mse_vals = my_cross_val(rr_model_best, 'mse', X_test, y_test)
 # print mse on test data
-
+print("Ridge Regression MSE by fold, Best Lambda on Test Set", best_rr_mse_vals)
