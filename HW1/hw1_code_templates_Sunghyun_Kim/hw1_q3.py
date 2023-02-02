@@ -60,11 +60,17 @@ for lambda_val in lambda_vals:
     print("Lasso Regression MSE by Fold", ls_mse_vals)
 # instantiate ridge regression and lasso objects for best values of lambda
 rr_model_best = MyRidgeRegression(0.01)
+ls_model_best = Lasso(0.01)
 # fit models using all training data
 rr_model_best.fit(X_train, y_train)
+ls_model_best.fit(X_train, y_train)
 # predict on test data
 rr_model_best.predict(X_test)
+ls_model_best.predict(X_test)
 # compute mse on test data
 best_rr_mse_vals = my_cross_val(rr_model_best, 'mse', X_test, y_test)
+best_ls_mse_vals = my_cross_val(ls_model_best, 'mse', X_test, y_test)
 # print mse on test data
-print("Ridge Regression MSE by fold, Best Lambda on Test Set", best_rr_mse_vals)
+print("Ridge Regression MSE by fold,", 0.01 , " for Best Lambda on Test Set", best_rr_mse_vals)
+print("Lasso Regression MSE by fold,", 0.01 , " for Best Lambda on Test Set", best_ls_mse_vals)
+

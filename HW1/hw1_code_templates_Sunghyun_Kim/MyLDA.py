@@ -22,4 +22,4 @@ class MyLDA():
     def predict(self, X):
         Fx = X@self.w.T
         prediction = np.where(Fx >= self.lambda_val, int(1), int(0))
-        return prediction
+        return prediction, self.w

@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
-import random 
+import random
+random.seed(2023) 
 
 def my_cross_val(model, loss_func, X, y, k=10):
     dataset = np.column_stack([X, y])

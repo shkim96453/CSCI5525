@@ -55,7 +55,7 @@ for lambda_val in lambda_vals:
     # print error rates from CV
     print ("LDA Error Rate by Fold", lda_err)
 # instantiate LDA object for best value of lambda
-best_lda = MyLDA(-0.002)
+best_lda = MyLDA(-0.003)
 # fit model using all training data
 best_lda.fit(X_train, y_train)
 # predict on test data
