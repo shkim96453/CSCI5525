@@ -56,10 +56,10 @@ best_test_cnn_sgd
 
 # Plot Image
 # Use Caution on running it as it will produce multiple images. 
-'''
-for i in range(len(best_missed_img)):
+
+for i in range(4):
     missed_np = best_missed_img[i].numpy()
     plt.imshow(missed_np, 'gray')
     plt.show()
-'''
+
 
